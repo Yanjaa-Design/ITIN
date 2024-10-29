@@ -14,8 +14,72 @@ import {
 } from "@/components/ui/accordion"
 import { FileText, CheckCircle, Shield, Mail, Phone, MapPin, ArrowRight, FileSpreadsheet, CreditCard, PiggyBank, UserPlus, FileCheck, Clock, Globe } from 'lucide-react'
 
-// Translations
-const translations = {
+// Define a type for the language keys
+type Language = 'en' | 'es';
+
+// Define translations with explicit typing
+const translations: Record<Language, {
+  nav: {
+    home: string;
+    about: string;
+    services: string;
+    howItWorks: string;
+    faq: string;
+    contact: string;
+  };
+  hero: {
+    title: string;
+    subtitle: string;
+    cta: string;
+  };
+  services: {
+    title: string;
+    items: {
+      title: string;
+      description: string;
+    }[];
+  };
+  about: {
+    title: string;
+    description: string;
+    whyTitle: string;
+    reasons: {
+      title: string;
+      description: string;
+    }[];
+  };
+  howItWorks: {
+    title: string;
+    steps: {
+      title: string;
+      description: string;
+    }[];
+  };
+  faq: {
+    title: string;
+    subtitle: string;
+  };
+  contact: {
+    title: string;
+    form: {
+      name: string;
+      email: string;
+      subject: string;
+      message: string;
+      send: string;
+    };
+    info: {
+      email: string;
+      phone: string;
+      address: string;
+    };
+  };
+  footer: {
+    rights: string;
+    privacy: string;
+    terms: string;
+  };
+}> = {
   en: {
     nav: {
       home: "Home",
@@ -33,59 +97,32 @@ const translations = {
     services: {
       title: "Our Services",
       items: [
-        {
-          title: "Application Assistance",
-          description: "We guide you through every step of the ITIN application process.",
-        },
-        {
-          title: "Document Review",
-          description: "Our experts review your documents to ensure accuracy and completeness.",
-        },
-        {
-          title: "Safe & Secure Processing",
-          description: "Apply with confidence. Your documents stay with you throughout the process.",
-        },
+        { title: "Application Assistance", description: "We guide you through every step of the ITIN application process." },
+        { title: "Document Review", description: "Our experts review your documents to ensure accuracy and completeness." },
+        { title: "Safe & Secure Processing", description: "Apply with confidence. Your documents stay with you throughout the process." },
       ],
     },
     about: {
       title: "About Us",
-      description: "We're on a mission to simplify the ITIN application process for migrants. ITIN Helper is a platform designed to guide you step-by-step through obtaining your Individual Taxpayer Identification Number (ITIN), helping you access vital financial services.",
+      description: "We're on a mission to simplify the ITIN application process for migrants.",
       whyTitle: "Why We Do It",
       reasons: [
-        {
-          title: "Filing Taxes",
-          description: "Stay compliant with U.S. tax law.",
-        },
-        {
-          title: "Opening Bank Accounts",
-          description: "Gain access to financial services.",
-        },
-        {
-          title: "Building Credit",
-          description: "Lay the foundation for credit opportunities and future loans.",
-        },
+        { title: "Filing Taxes", description: "Stay compliant with U.S. tax law." },
+        { title: "Opening Bank Accounts", description: "Gain access to financial services." },
+        { title: "Building Credit", description: "Lay the foundation for credit opportunities and future loans." },
       ],
     },
     howItWorks: {
       title: "Get Your ITIN in 3 Simple Steps",
       steps: [
-        {
-          title: "Sign Up",
-          description: "Join the waitlist to get started.",
-        },
-        {
-          title: "Document Submission",
-          description: "We help you gather and submit the required documents.",
-        },
-        {
-          title: "Track and Receive",
-          description: "Track your application and receive your ITIN.",
-        },
+        { title: "Sign Up", description: "Join the waitlist to get started." },
+        { title: "Document Submission", description: "We help you gather and submit the required documents." },
+        { title: "Track and Receive", description: "Track your application and receive your ITIN." },
       ],
     },
     faq: {
       title: "Have a Question?",
-      subtitle: "From understanding ITINs to navigating the application process. Find quick answers to help you make the most of our services.",
+      subtitle: "From understanding ITINs to navigating the application process.",
     },
     contact: {
       title: "Contact Us",
@@ -119,65 +156,38 @@ const translations = {
     },
     hero: {
       title: "Simplifica tu Proceso de Solicitud de ITIN",
-      subtitle: "Únete a nuestra lista de espera para acceder a oportunidades financieras y obtener tu ITIN sin complicaciones.",
+      subtitle: "Únete a nuestra lista de espera para acceder a oportunidades financieras.",
       cta: "Únete a la Lista de Espera",
     },
     services: {
       title: "Nuestros Servicios",
       items: [
-        {
-          title: "Asistencia en la Solicitud",
-          description: "Te guiamos en cada paso del proceso de solicitud de ITIN.",
-        },
-        {
-          title: "Revisión de Documentos",
-          description: "Nuestros expertos revisan tus documentos para garantizar precisión y completitud.",
-        },
-        {
-          title: "Procesamiento Seguro",
-          description: "Aplica con confianza. Tus documentos permanecen contigo durante todo el proceso.",
-        },
+        { title: "Asistencia en la Solicitud", description: "Te guiamos en cada paso del proceso de solicitud de ITIN." },
+        { title: "Revisión de Documentos", description: "Nuestros expertos revisan tus documentos para garantizar precisión." },
+        { title: "Procesamiento Seguro", description: "Aplica con confianza. Tus documentos permanecen contigo." },
       ],
     },
     about: {
       title: "Sobre Nosotros",
-      description: "Nuestra misión es simplificar el proceso de solicitud de ITIN para migrantes. ITIN Helper es una plataforma diseñada para guiarte paso a paso en la obtención de tu Número de Identificación Personal del Contribuyente (ITIN), ayudándote a acceder a servicios financieros vitales.",
+      description: "Nuestra misión es simplificar el proceso de solicitud de ITIN para migrantes.",
       whyTitle: "Por Qué Lo Hacemos",
       reasons: [
-        {
-          title: "Declaración de Impuestos",
-          description: "Mantente en cumplimiento con la ley fiscal de EE.UU.",
-        },
-        {
-          title: "Apertura de Cuentas Bancarias",
-          description: "Obtén acceso a servicios financieros.",
-        },
-        {
-          title: "Construcción de Crédito",
-          description: "Establece las bases para oportunidades de crédito y futuros préstamos.",
-        },
+        { title: "Declaración de Impuestos", description: "Mantente en cumplimiento con la ley fiscal de EE.UU." },
+        { title: "Apertura de Cuentas Bancarias", description: "Obtén acceso a servicios financieros." },
+        { title: "Construcción de Crédito", description: "Establece las bases para oportunidades de crédito." },
       ],
     },
     howItWorks: {
       title: "Obtén tu ITIN en 3 Simples Pasos",
       steps: [
-        {
-          title: "Regístrate",
-          description: "Únete a la lista de espera para comenzar.",
-        },
-        {
-          title: "Envío de Documentos",
-          description: "Te ayudamos a recopilar y enviar los documentos requeridos.",
-        },
-        {
-          title: "Seguimiento y Recepción",
-          description: "Haz seguimiento de tu solicitud y recibe tu ITIN.",
-        },
+        { title: "Regístrate", description: "Únete a la lista de espera para comenzar." },
+        { title: "Envío de Documentos", description: "Te ayudamos a recopilar y enviar los documentos requeridos." },
+        { title: "Seguimiento y Recepción", description: "Haz seguimiento de tu solicitud y recibe tu ITIN." },
       ],
     },
     faq: {
       title: "¿Tienes una Pregunta?",
-      subtitle: "Desde entender los ITIN hasta navegar el proceso de solicitud. Encuentra respuestas rápidas para aprovechar al máximo nuestros servicios.",
+      subtitle: "Desde entender los ITIN hasta navegar el proceso de solicitud.",
     },
     contact: {
       title: "Contáctanos",
@@ -201,6 +211,12 @@ const translations = {
     },
   },
 }
+
+export function LandingPage() {
+  const [lang, setLang] = useState<Language>('en')
+  const t = translations[lang]
+
+  const toggleLanguage = () => setLang(lang === 'en' ? 'es' : 'en')
 
 export function LandingPage() {
   const [lang, setLang] = useState('en')
