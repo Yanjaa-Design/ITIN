@@ -1,5 +1,18 @@
 'use client'
 
+import { useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import { FileText, CheckCircle, Shield, Mail, Phone, MapPin, ArrowRight, FileSpreadsheet, CreditCard, PiggyBank, UserPlus, FileCheck, Clock, Pen, Search, ActivitySquare } from 'lucide-react'
+
 const englishContent = {
   nav: {
     home: "Home",
@@ -8,6 +21,7 @@ const englishContent = {
     howItWorks: "How It Works",
     faq: "FAQ",
     contact: "Contact",
+    scheduleAppointment: "Schedule Appointment",
   },
   hero: {
     title: "Simplify Your ITIN Application Process",
@@ -102,6 +116,7 @@ const spanishContent = {
     howItWorks: "Cómo funciona",
     faq: "Preguntas frecuentes",
     contact: "Contacto",
+    scheduleAppointment: "Programar Cita",
   },
   hero: {
     title: "Simplifica tu proceso de solicitud de ITIN",
@@ -188,23 +203,12 @@ const spanishContent = {
   },
 };
 
-import { useState } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
-import { FileText, CheckCircle, Shield, Mail, Phone, MapPin, ArrowRight, FileSpreadsheet, CreditCard, PiggyBank, UserPlus, FileCheck, Clock, Globe, Calendar, Pen, Search, ActivitySquare } from 'lucide-react'
+export function LandingPageComponent() {
+  const { locale } = 'en'; //Hardcoded to 'en'
+  const content = locale === 'es' ? spanishContent : englishContent;
 
-export function LandingPage({ lang = 'en' }) {
-  const content = lang === 'en' ? englishContent : spanishContent;
-  
   const { nav, hero, whoWeAre, whyItinMatters, howItWorks, services, faq, schedule, footer } = content;
+
 
   return (
     <div className="min-h-screen bg-white">
@@ -213,34 +217,17 @@ export function LandingPage({ lang = 'en' }) {
         <div className="flex items-center">
           <span className="text-2xl font-bold text-blue-500">ITIN Helper</span>
         </div>
-        <nav className="hidden md:flex space-x-8">
+        <nav className="hidden md:flex items-center space-x-8">
           <Link href="/" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.home}</Link>
           <Link href="#about" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.about}</Link>
           <Link href="#services" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.services}</Link>
           <Link href="#how-it-works" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.howItWorks}</Link>
           <Link href="#faq" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.faq}</Link>
           <Link href="#contact" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.contact}</Link>
+          <Button asChild variant="outline" className="text-blue-500 border-blue-500 hover:bg-blue-50">
+            <Link href="https://calendly.com/brlteamroom9-labs">{nav.scheduleAppointment}</Link>
+          </Button>
         </nav>
-        <div className="flex items-center space-x-2">
-          <Link href="/" passHref>
-            <Button
-              variant="ghost"
-              size="sm"
-              className={`text-sm font-medium ${lang === 'en' ? 'bg-gray-200' : ''}`}
-            >
-              EN
-            </Button>
-          </Link>
-          <Link href="/es" passHref>
-            <Button
-              variant="ghost"
-              size="sm"
-              className={`text-sm font-medium ${lang === 'es' ? 'bg-gray-200' : ''}`}
-            >
-              ES
-            </Button>
-          </Link>
-        </div>
       </header>
 
       {/* Main Content */}
@@ -301,7 +288,7 @@ export function LandingPage({ lang = 'en' }) {
         <section id="faq" className="py-20">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-4xl font-bold text-center mb-4 text-[#333]">{faq.title}</h2>
-            <p className="text-center text-gray-600 mb-12">
+            <p className="text-center  text-gray-600 mb-12">
               {faq.subtitle}
             </p>
             <Accordion type="single" collapsible className="w-full">
@@ -361,13 +348,11 @@ export function LandingPage({ lang = 'en' }) {
               {howItWorks.subtitle}
             </p>
             <div className="flex flex-col md:flex-row gap-8 items-center">
-              
               {howItWorks.steps.map((step, index) => (
-                
                 <div key={index} className="flex-1 flex flex-col items-center text-center">
                   <div className={`w-16 h-16 rounded-full ${['bg-[#FFD9D9]', 'bg-[#D9EEFF]', 'bg-[#D9FFE5]'][index]} flex items-center justify-center mb-4`}>
                     <div className={`${['text-[#FF9494]', 'text-[#94C9FF]', 'text-[#4CAF50]'][index]}`}>
-                      {[<Calendar className="h-8 w-8" />, <Pen className="h-8 w-8" />, <ActivitySquare className="h-8 w-8" />][index]}
+                      {[<Clock className="h-8 w-8" />, <Pen className="h-8 w-8" />, <ActivitySquare className="h-8 w-8" />][index]}
                     </div>
                   </div>
                   <h3 className="text-xl font-bold mb-2 text-[#333]">{step.title}</h3>
@@ -395,7 +380,6 @@ export function LandingPage({ lang = 'en' }) {
             </Button>
           </div>
         </section>
-
       </main>
 
       {/* Footer */}
@@ -412,8 +396,7 @@ export function LandingPage({ lang = 'en' }) {
             <Link href="#how-it-works" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.howItWorks}</Link>
             <Link href="#faq" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.faq}</Link>
             <Link href="#contact" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.contact}</Link>
-            <Link href="/privacy" className="text-gray-600 hover:text-[#FF9494] transition-colors">{footer.privacy}</Link>
-            <Link href="/terms" className="text-gray-600 hover:text-[#FF9494] transition-colors">{footer.terms}</Link>
+            <Link href="https://calendly.com/brlteamroom9-labs" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.scheduleAppointment}</Link>
           </nav>
           <div className="flex flex-col space-y-2 items-center md:items-start">
             <h3 className="text-lg font-semibold text-gray-800 mb-2">Contact Us</h3>
