@@ -40,7 +40,7 @@ export function LandingPage() {
           <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
             Join our waitlist to access financial opportunities and get your ITIN hassle-free.
           </p>
-          <Link href="https://docs.google.com/forms/d/1mby5zO0W4USsfPbm3Gi-kwBthG0gJrAKw8VnihomRr4/edit" target="_blank" rel="noopener noreferrer">
+          <Link href="https://mymoneystory.typeform.com/to/lu7zlgS3" target="_blank" rel="noopener noreferrer">
             <Button size="lg" className="bg-[#94C9FF] hover:bg-[#76B6FF] text-white rounded-full px-8 py-6 text-lg">
               Join the Waitlist
               <ArrowRight className="ml-2 h-5 w-5" />
