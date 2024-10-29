@@ -19,7 +19,7 @@ export function LandingPageComponent() {
           <span className="text-2xl font-bold text-blue-500">ITIN Helper</span>
         </div>
         <Button asChild variant="outline" className="text-blue-500 border-blue-500 hover:bg-blue-50">
-          <Link href="https://calendly.com/brlteamroom9-labs">Schedule Appointment</Link>
+          <Link href="https://calendly.com/brlteamroom9-labs/30min?back=1&month=2024-11">Schedule Appointment</Link>
         </Button>
       </header>
 
@@ -31,7 +31,7 @@ export function LandingPageComponent() {
           <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
             Join our waitlist to access financial opportunities and get your ITIN hassle-free.
           </p>
-          <Link href="#schedule">
+          <Link href="https://tally.so/r/woVdpN">
             <Button size="lg" className="bg-blue-500 hover:bg-blue-600 text-white rounded-full px-8 py-6 text-lg">
               Join the Waitlist
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -244,7 +244,7 @@ export function LandingPageComponent() {
             <p className="text-gray-600 flex items-center"><Mail className="h-4 w-4 mr-2" /> team9@labs.robinhood.org</p>
             <p className="text-gray-600 flex items-center"><Phone className="h-4 w-4 mr-2" /> (646) 920-6771</p>
             <Button asChild variant="outline" className="text-blue-500 border-blue-500 hover:bg-blue-50">
-              <Link href="https://forms.gle/Ue3Hy7Ht9aqVLLZA6">Join Waitlist</Link>
+              <Link href="https://tally.so/r/woVdpN">Join Waitlist</Link>
             </Button>
           </div>
         </div>
