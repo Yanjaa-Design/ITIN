@@ -22,6 +22,7 @@ const englishContent = {
     faq: "FAQ",
     contact: "Contact",
     scheduleAppointment: "Schedule Appointment",
+    joinWaitlist: "Join Waitlist",
   },
   hero: {
     title: "Simplify Your ITIN Application Process",
@@ -99,7 +100,7 @@ const englishContent = {
   schedule: {
     title: "Schedule an Appointment",
     subtitle: "Ready to start your ITIN application? Book a consultation with our experts today.",
-    cta: "Schedule Now",
+    cta: "Join Waitlist",
   },
   footer: {
     rights: "© 2024 ITIN Helper. All rights reserved.",
@@ -117,6 +118,7 @@ const spanishContent = {
     faq: "Preguntas frecuentes",
     contact: "Contacto",
     scheduleAppointment: "Programar Cita",
+    joinWaitlist: "Unirse a la Lista de Espera",
   },
   hero: {
     title: "Simplifica tu proceso de solicitud de ITIN",
@@ -217,17 +219,9 @@ export function LandingPageComponent() {
         <div className="flex items-center">
           <span className="text-2xl font-bold text-blue-500">ITIN Helper</span>
         </div>
-        <nav className="hidden md:flex items-center space-x-8">
-          <Link href="/" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.home}</Link>
-          <Link href="#about" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.about}</Link>
-          <Link href="#services" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.services}</Link>
-          <Link href="#how-it-works" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.howItWorks}</Link>
-          <Link href="#faq" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.faq}</Link>
-          <Link href="#contact" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.contact}</Link>
-          <Button asChild variant="outline" className="text-blue-500 border-blue-500 hover:bg-blue-50">
-            <Link href="https://calendly.com/brlteamroom9-labs">{nav.scheduleAppointment}</Link>
-          </Button>
-        </nav>
+        <Button asChild variant="outline" className="text-blue-500 border-blue-500 hover:bg-blue-50">
+          <Link href="https://calendly.com/brlteamroom9-labs">{nav.scheduleAppointment}</Link>
+        </Button>
       </header>
 
       {/* Main Content */}
@@ -367,15 +361,15 @@ export function LandingPageComponent() {
         </section>
 
         {/* Schedule Appointment Section */}
-        <section id="schedule" className="py-20 bg-gradient-to-r from-[#FFD9D9] via-[#D9EEFF] to-[#D9FFE5]">
+        <section id="schedule" className="py-20 bg-gradient-to-r from-[#FFD9D9] via-[#D9EEFF] to-[#D9FFE5] rounded-3xl">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-4 text-[#333]">{schedule.title}</h2>
+            <h2 className="text-4xl font-bold mb-4 text-[#333]">Start Your ITIN Journey</h2>
             <p className="text-xl text-gray-600 mb-8">
-              {schedule.subtitle}
+              Ready to get your ITIN? Schedule a free consultation with our experts today. Limited availability!
             </p>
             <Button className="bg-blue-500 hover:bg-blue-600 text-white text-lg px-8 py-3" asChild>
               <Link href="https://calendly.com/brlteamroom9-labs">
-                {schedule.cta}
+                Schedule Appointment
               </Link>
             </Button>
           </div>
@@ -383,26 +377,18 @@ export function LandingPageComponent() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-50 py-12 px-6 md:px-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="flex flex-col items-center md:items-start">
-            <span className="text-2xl font-bold text-blue-500 mb-4">ITIN Helper</span>
+      <footer className="py-12 px-6 md:px-10">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+          <div className="flex flex-col items-center md:items-start mb-4 md:mb-0">
+            <span className="text-2xl font-bold text-blue-500 mb-2">ITIN Helper</span>
             <p className="text-gray-600 text-sm">{footer.rights}</p>
           </div>
-          <nav className="flex flex-col space-y-2 items-center md:items-start">
-            <Link href="/" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.home}</Link>
-            <Link href="#about" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.about}</Link>
-            <Link href="#services" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.services}</Link>
-            <Link href="#how-it-works" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.howItWorks}</Link>
-            <Link href="#faq" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.faq}</Link>
-            <Link href="#contact" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.contact}</Link>
-            <Link href="https://calendly.com/brlteamroom9-labs" className="text-gray-600 hover:text-[#FF9494] transition-colors">{nav.scheduleAppointment}</Link>
-          </nav>
-          <div className="flex flex-col space-y-2 items-center md:items-start">
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">Contact Us</h3>
+          <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
             <p className="text-gray-600 flex items-center"><Mail className="h-4 w-4 mr-2" /> team9@labs.robinhood.org</p>
             <p className="text-gray-600 flex items-center"><Phone className="h-4 w-4 mr-2" /> (646) 920-6771</p>
-            <p className="text-gray-600 flex items-center"><MapPin className="h-4 w-4 mr-2" /> 123 Main St, Anytown, USA 12345</p>
+            <Button asChild variant="outline" className="text-blue-500 border-blue-500 hover:bg-blue-50">
+              <Link href="https://forms.gle/Ue3Hy7Ht9aqVLLZA6">{nav.joinWaitlist}</Link>
+            </Button>
           </div>
         </div>
       </footer>
