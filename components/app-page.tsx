@@ -244,7 +244,7 @@ export function Page() {
       </main>
 
       {/* Footer */}
-      <footer className="py-12 px-6 md:px-10">
+      <footer className="py-12 px-6  md:px-10">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
           <div className="flex flex-col items-center  md:items-start mb-4 md:mb-0">
             <span className="text-2xl font-bold text-blue-500 mb-2">ITIN Helper</span>
